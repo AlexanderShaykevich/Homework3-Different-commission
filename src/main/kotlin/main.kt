@@ -11,15 +11,15 @@ const val addCommissionMasterMaestro = 2000
 
 
 fun main() {
-    transfer(amount = 8000000)
-    transfer(MASTER, 5000000, 8000000)
-    transfer(MAESTRO, 7600000, 8000000)
-    transfer(accountType = MASTER, amount = 8000000)
-    transfer(accountType = VISA, amount = 8000000)
-    transfer(accountType = MIR, amount = 5000)
+    println(transfer(amount = 8000000))
+    println(transfer(MASTER, 5000000, 8000000))
+    println(transfer(MAESTRO, 7600000, 8000000))
+    println(transfer(accountType = MASTER, amount = 8000000))
+    println(transfer(accountType = VISA, amount = 8000000))
+    println(transfer(accountType = MIR, amount = 5000))
 }
 
-fun transfer(accountType: String = VK, previous: Long = 0, amount: Long) {
+fun transfer(accountType: String = VK, previous: Long = 0, amount: Long): Number {
     val toTransfer = when (accountType) {
         VK -> amount
         MASTER, MAESTRO ->
@@ -30,7 +30,7 @@ fun transfer(accountType: String = VK, previous: Long = 0, amount: Long) {
             else amount - (amount * commissionVisaMir)
         else -> 0.00
     }
-    return println("Transfer amount: $toTransfer")
+    return toTransfer
 }
 
 
